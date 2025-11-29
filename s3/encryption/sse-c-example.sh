@@ -23,3 +23,7 @@ aws s3api get-object \
   --sse-customer-algorithm AES256 \
   --sse-customer-key fileb://sse_c_key.bin \
   downloaded-$LOCALFILE
+
+
+
+##you can export the key as env variable too...
