@@ -37,5 +37,3 @@ echo "Associated Route Table $RTB_ID with Subnet $SUBNET_ID"
 #enable auto-assign public IP on launch for subnet
 
 
-
-

@@ -1,0 +1,30 @@
+#create an aws cloudformation temlplate for an iam policy that allows read only access to s3
+AWSTemplateFormatVersion: "2010-09-09"
+Description: IAM Policy for Read-Only Access to S3
+Resources:
+  S3ReadOnlyPolicy:
+    Type: "AWS::IAM::Policy"
+    Properties:
+      PolicyName: S3ReadOnlyAccessPolicy
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Action:
+              - "s3:Get*"
+              - "s3:List*"
+            Resource: "*"
+      Roles:
+        - !Ref ReadOnlyRole
+  ReadOnlyRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - ec2.amazonaws.com
+            Action:
+              - "sts:AssumeRole"
