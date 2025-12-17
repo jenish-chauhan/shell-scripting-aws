@@ -1,0 +1,22 @@
+#generate an AWS CloudFormation template for an SNS topic with a subscription to an email
+AWSTemplateFormatVersion: "2010-09-09"
+Description: CloudFormation template to create an SNS topic with an email subscription
+Resources:
+  MySNSTopic:
+    Type: "AWS::SNS::Topic"
+    Properties:
+      TopicName: MyTopic
+
+  MySNSSubscription:
+    Type: "AWS::SNS::Subscription"
+    Properties:
+      Protocol: email
+      Endpoint: jenishchauhan.09@gmail.com
+      TopicArn: !Ref MySNSTopic
+Outputs:
+  TopicARN:
+    Description: "ARN of the SNS Topic"
+    Value: !Ref MySNSTopic
+  SubscriptionEndpoint:
+    Description: "Email endpoint of the SNS Subscription"
+    Value: jenishchauhan.09@gmail.com
